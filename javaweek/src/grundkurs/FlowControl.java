@@ -1,11 +1,6 @@
 package grundkurs;
 
 public class FlowControl {
-	public static void main(String[] args) {
-		// scope();
-		switchy(3);
-	}
-
 	public static void scope() {
 		// Default scope is package-private.
 		int x = 5;
@@ -33,6 +28,33 @@ public class FlowControl {
 			System.out.println(d);
 			// Ausgabeanweisung/Methodenaufruf
 		}
+	}
+
+	public static int n = 37; // FlowControl.n
+
+	public static void main(String[] args) {
+		// scope();
+		System.out.println(n);
+		switchy(5);
+		loopy();
+	}
+
+	private static void loopy() {
+		for (int i = 10; i >= 0; i--) {
+			System.out.println(i);
+		}
+		int i = 0;
+		while (i < 10) {
+			i++;
+			if (i % 2 != 0)
+				continue;
+			System.out.println(i);
+		}
+		do {
+			i--;
+			System.out.println(i);
+		} while (i > 0);
+
 	}
 
 	public static void switchy(int n) {
