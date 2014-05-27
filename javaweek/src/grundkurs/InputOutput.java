@@ -85,13 +85,26 @@ public class InputOutput {
 	}
 
 	public static double paren() {
-		double x = 192119201;
-		double y = 35675640;
-		double x2 = x * x;
-		double y2 = y * y;
-		double s = (1682 * x * y2 * y2 + 3 * x2 * x + 29 * x * y2 - 2 * x2 * x2
-				* x + 832);
+		double x, y, x2, y2, s;
+		x = 192119201;
+		y = 35675640;
+		x2 = x * x;
+		y2 = y * y;
+		s = (1682 * x * y2 * y2 + 3 * x2 * x + 29 * x * y2 - 2 * x2 * x2 * x + 832);
 		return s * (1.0 / 107751.0);
+	}
+
+	public static void pistuff(double length, double width) {
+		double diameter, area, lateralArea, totalArea, volume;
+		final double pi = 3.141592;
+		diameter = length / pi;
+		area = pi * Math.pow(diameter / 2, 2);
+		lateralArea = length * width;
+		totalArea = 2 * area + lateralArea;
+		volume = area * width;
+		System.out.println("Diameter: " + diameter + ", Area: " + area
+				+ ", lateralArea: " + lateralArea + ", totalArea: " + totalArea
+				+ ", Volume: " + volume);
 	}
 
 	public static void main(String[] args) {
@@ -99,8 +112,21 @@ public class InputOutput {
 		// input();
 		// inputAlt();
 		// nums();
-		System.out.println(add());
-		System.out.println(paren());
+		// System.out.println(add());
+		// System.out.println(paren());
+		pistuff(10.0, 5.0);
+		splitSeconds(158036522);
+	}
+
+	public static void splitSeconds(int secs) {
+		int years, days, hours, minutes, seconds;
+		years = secs / 31536000;
+		days = (secs % 31536000) / 86400;
+		hours = ((secs % 31536000) % 86400) / 3600;
+		minutes = (((secs % 31536000) % 86400) % 3600) / 60;
+		seconds = (((secs % 31536000) % 86400) % 3600) % 60;
+		System.out.println(years + " " + days + " " + hours + " " + minutes
+				+ " " + seconds);
 	}
 
 	private static void toolsInput() {
