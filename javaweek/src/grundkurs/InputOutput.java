@@ -5,6 +5,8 @@ import grundkurs.tools.IOTools;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class InputOutput {
 	public static void random() {
@@ -27,11 +29,32 @@ public class InputOutput {
 		} catch (IOException ie) {
 			ie.printStackTrace();
 		}
-	} // fmltest
+	}
+
+	public static void inputAlt() {
+		int zip = 0;
+		Scanner keyboard = new Scanner(System.in);
+		System.out.print("What city do you live in?");
+		String city = keyboard.next();
+		System.out.print("Whats your zipcode?");
+		try {
+			zip = keyboard.nextInt();
+		} catch (InputMismatchException e) {
+			// skip
+			// System.out.print("Invalid input!");
+		}
+		System.out.print("A number between 0 and 1?");
+		double num = keyboard.nextDouble();
+		System.out.print("Your favorite ice cream flavor?");
+		String flavor = keyboard.next();
+		String output = "Hey, you are from %s (%s), the number was %s and your favorite ice cream is %s!";
+		System.out.println(String.format(output, city, zip, num, flavor));
+	}
 
 	public static void main(String[] args) {
 		// toolsInput();
-		input();
+		// input();
+		inputAlt();
 	}
 
 	private static void toolsInput() {
