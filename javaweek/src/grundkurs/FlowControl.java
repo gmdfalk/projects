@@ -2,7 +2,9 @@ package grundkurs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
@@ -56,6 +58,24 @@ public class FlowControl {
 		// crossSum(123456789);
 		toGalacticTime("25.11.2011, 11.11 Uhr");
 		toEarthTime("328825.465");
+		numToText(10);
+	}
+
+	private static void numToText(int n) {
+		Map<Integer, String> toText = new HashMap<Integer, String>();
+		toText.put(1, "one");
+		toText.put(1, "two");
+		toText.put(1, "three");
+		toText.put(1, "four");
+		toText.put(1, "five");
+		toText.put(1, "six");
+		toText.put(1, "seven");
+		toText.put(1, "eight");
+		toText.put(1, "nine");
+		toText.put(1, "zero");
+		while (n > 0) {
+
+		}
 	}
 
 	private static void toEarthTime(String timeString) {
@@ -70,7 +90,6 @@ public class FlowControl {
 		day = rest % 30 == 0 ? 30 : rest % 30;
 		double hour = (double) gTime / 1000.0 * 24.0;
 		double minutes = (hour - Math.floor(hour)) * 60;
-		System.out.println(hour + " " + minutes);
 		String time = String.format("%02d", (int) hour) + ":"
 				+ String.format("%02d", (int) minutes);
 		String date = String.format("%02d", day) + "."
@@ -80,8 +99,11 @@ public class FlowControl {
 
 	private static void toGalacticTime(String timeString) {
 		// Validate input string.
-		if (!timeString.matches("^\\d+.\\d+.\\d{4}.*\\d+.\\d.*"))
+		if (!timeString
+				.matches("^\\d{1,2}\\.\\d{1,2}\\.\\d{4}.*\\d{1,2}\\.\\d{1,2}.*")) {
+			System.out.println("Invalid input. Valid: 30.1.1984 13.08 o'clock");
 			return;
+		}
 		// Force the input into a more managable form.
 		timeString = timeString.replaceAll("(?!\\.|\\s)\\D", "");
 		String[] timeParts = timeString.split(" ");
