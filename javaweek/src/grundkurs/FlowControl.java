@@ -54,18 +54,35 @@ public class FlowControl {
 		// maxFixed(1.0, 2.0, 3.0, 4.0);
 		// stars();
 		// crossSum(123456789);
-		galacticTime("11.11.2001, 11.11 Uhr");
+		toGalacticTime("25.11.2011, 11.11 Uhr");
 	}
 
-	private static void galacticTime(String time) {
+	private static void toEarthTime(String timeString) {
 		// Validate input string.
-		if (!time.matches("^\\d+.\\d+.\\d{4}.*\\d+.\\d.*"))
+		String[] timeParts = timeString.split("\\.");
+		int gDays = Integer.parseInt(timeParts[0]);
+		int gTime = Integer.parseInt(timeParts[1]);
+		int year, month, day;
+		double hour, minute;
+	}
+
+	private static void toGalacticTime(String timeString) {
+		// Validate input string.
+		if (!timeString.matches("^\\d+.\\d+.\\d{4}.*\\d+.\\d.*"))
 			return;
 		// Force the input into a more managable form.
-		time = time.replaceAll("(?!\\.|\\s)\\D", "");
-		String[] times = time.split(" ");
-		double gtime = 0;
-		System.out.println(times[0]);
+		timeString = timeString.replaceAll("(?!\\.|\\s)\\D", "");
+		String[] timeParts = timeString.split(" ");
+		String[] date = timeParts[0].split("\\.");
+		String[] time = timeParts[1].split("\\.");
+		int year = (Integer.parseInt(date[2]) - 1111) * 365;
+		int month = (Integer.parseInt(date[1]) - 1) * 30;
+		int day = Integer.parseInt(date[0]);
+		double hour = Double.parseDouble(time[0]);
+		double minute = Double.parseDouble(time[1]);
+		int galacticYear = year + month + day;
+		double galacticTime = (hour + (minute / 60)) * 1000.0 / 24.0;
+		System.out.println(galacticYear + "." + (int) galacticTime);
 	}
 
 	private static String buildString1(String s, int multiplier) {
