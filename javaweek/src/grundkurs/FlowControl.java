@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
+
 public class FlowControl {
 	public static void scope() {
 		// Default scope is package-private.
@@ -51,7 +53,19 @@ public class FlowControl {
 		// max(1.0, 2.0, 3.0, 4.0);
 		// maxFixed(1.0, 2.0, 3.0, 4.0);
 		// stars();
-		crossSum(12345);
+		// crossSum(123456789);
+		galacticTime("11.11.2001, 11.11 Uhr");
+	}
+
+	private static void galacticTime(String time) {
+		// Validate input string.
+		if (!time.matches("^\\d+.\\d+.\\d{4}.*\\d+.\\d.*"))
+			return;
+		// Force the input into a more managable form.
+		time = time.replaceAll("(?!\\.|\\s)\\D", "");
+		String[] times = time.split(" ");
+		double gtime = 0;
+		System.out.println(times[0]);
 	}
 
 	private static String buildString1(String s, int multiplier) {
