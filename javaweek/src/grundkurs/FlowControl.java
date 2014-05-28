@@ -1,11 +1,9 @@
 package grundkurs;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-import grundkurs.tools.IOTools;
+import org.apache.commons.lang3.StringUtils;
 
 public class FlowControl {
 	public static void scope() {
@@ -53,14 +51,30 @@ public class FlowControl {
 		stars();
 	}
 
+	private static String buildString1(String s, int multiplier) {
+		return StringUtils.repeat(s, multiplier);
+	}
+
+	private static String buildString2(String s, int multiplier) {
+		StringBuffer buffer = new StringBuffer(s);
+		for (int i = 1; i < multiplier; i++) {
+			buffer.append(s);
+		}
+		return buffer.toString();
+	}
+
 	private static void stars() {
 		// 4.25
 		Scanner in = new Scanner(System.in);
 		System.out.print("Enter the number of lines to print: ");
 		int lines = in.nextInt();
 		String s = "*";
-		for (int i = 1; i <= lines; i++)
-			System.out.println(StringUtils.repeat(s, i));
+		for (int i = 1; i <= lines; i++) {
+			// System.out.println(buildString2(s, i));
+			if (i > 1)
+				s += "*";
+			System.out.println(s);
+		}
 	}
 
 	private static void loopy() {
