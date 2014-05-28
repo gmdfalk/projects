@@ -2,14 +2,12 @@ package grundkurs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
-
-import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
 
 public class FlowControl {
 	public static void scope() {
@@ -56,26 +54,57 @@ public class FlowControl {
 		// maxFixed(1.0, 2.0, 3.0, 4.0);
 		// stars();
 		// crossSum(123456789);
-		toGalacticTime("25.11.2011, 11.11 Uhr");
-		toEarthTime("328825.465");
-		numToText(10);
+		// toGalacticTime("25.11.2011, 11.11 Uhr");
+		// toEarthTime("328825.465");
+		numToText(12345);
+		multiply(10);
+		compoundInterest(100, 0.06, 4);
+	}
+
+	private static void compoundInterest(double amount, double interest,
+			double runtime) {
+		String label;
+		for (int i = 1; i <= runtime; i++) {
+			amount *= (interest + 1.0);
+			if (i == 1) {
+				label = " year: ";
+			} else {
+				label = " years: ";
+			}
+			System.out.println("After " + i + label + amount);
+		}
+	}
+
+	private static void multiply(int n) {
+		for (int i = 1; i <= 10; i++) {
+			System.out.print(i * n + " ");
+		}
+		System.out.println("");
 	}
 
 	private static void numToText(int n) {
 		Map<Integer, String> toText = new HashMap<Integer, String>();
 		toText.put(1, "one");
-		toText.put(1, "two");
-		toText.put(1, "three");
-		toText.put(1, "four");
-		toText.put(1, "five");
-		toText.put(1, "six");
-		toText.put(1, "seven");
-		toText.put(1, "eight");
-		toText.put(1, "nine");
-		toText.put(1, "zero");
+		toText.put(2, "two");
+		toText.put(3, "three");
+		toText.put(4, "four");
+		toText.put(5, "five");
+		toText.put(6, "six");
+		toText.put(7, "seven");
+		toText.put(8, "eight");
+		toText.put(9, "nine");
+		toText.put(0, "zero");
+		ArrayList<String> textList = new ArrayList<String>();
 		while (n > 0) {
-
+			int lastDigit = n % 10;
+			n /= 10;
+			String asText = toText.get(lastDigit);
+			textList.add(asText);
+			// System.out.print(asText + " ");
 		}
+		System.out.println(textList);
+		Collections.reverse(textList);
+		System.out.println(textList);
 	}
 
 	private static void toEarthTime(String timeString) {
