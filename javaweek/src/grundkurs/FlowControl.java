@@ -55,6 +55,7 @@ public class FlowControl {
 		// stars();
 		// crossSum(123456789);
 		toGalacticTime("25.11.2011, 11.11 Uhr");
+		toEarthTime("328825.465");
 	}
 
 	private static void toEarthTime(String timeString) {
@@ -62,8 +63,19 @@ public class FlowControl {
 		String[] timeParts = timeString.split("\\.");
 		int gDays = Integer.parseInt(timeParts[0]);
 		int gTime = Integer.parseInt(timeParts[1]);
-		int year, month, day;
-		double hour, minute;
+		int year, day, month, rest;
+		year = 1111 + (gDays / 365);
+		rest = gDays % 365;
+		month = (rest / 30) + 1 == 13 ? 12 : (rest / 30) + 1;
+		day = rest % 30 == 0 ? 30 : rest % 30;
+		double hour = (double) gTime / 1000.0 * 24.0;
+		double minutes = (hour - Math.floor(hour)) * 60;
+		System.out.println(hour + " " + minutes);
+		String time = String.format("%02d", (int) hour) + ":"
+				+ String.format("%02d", (int) minutes);
+		String date = String.format("%02d", day) + "."
+				+ String.format("%02d", month) + "." + year;
+		System.out.println(date + ", " + time + " o'clock.");
 	}
 
 	private static void toGalacticTime(String timeString) {
