@@ -1,6 +1,8 @@
 package grundkurs;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
@@ -48,7 +50,8 @@ public class FlowControl {
 		// fixMe();
 		// max(1.0, 2.0, 3.0, 4.0);
 		// maxFixed(1.0, 2.0, 3.0, 4.0);
-		stars();
+		// stars();
+		crossSum(12345);
 	}
 
 	private static String buildString1(String s, int multiplier) {
@@ -61,6 +64,21 @@ public class FlowControl {
 			buffer.append(s);
 		}
 		return buffer.toString();
+	}
+
+	private static void crossSum(int n) {
+		int sum = 0;
+		while (n > 0) {
+			int digit = n % 10;
+			n /= 10;
+			sum += digit;
+			if (n > 0) {
+				System.out.print(digit + " + ");
+			} else {
+				System.out.print(digit + " = ");
+			}
+		}
+		System.out.println(sum);
 	}
 
 	private static void stars() {
