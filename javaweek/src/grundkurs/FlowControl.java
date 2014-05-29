@@ -61,15 +61,57 @@ public class FlowControl {
 		// multiply(10);
 		// compoundInterest(100, 0.06, 4);
 		// guessingGame();
-		short decimal = 1234;
-		byte base = 2;
-		System.out.println(changeBase(decimal, base));
-		christmasTree();
+		// System.out.println(changeBase((short) 1234, (byte) 2));
+		// christmasTree();
+		friendlyNumbers((short) 220, (short) 284);
+	}
+
+	private static ArrayList<Short> getFactors(short num) {
+		ArrayList<Short> factors = new ArrayList<Short>();
+		for (short i = 1; i < num; i++) {
+			if (num % i == 0)
+				factors.add(i);
+		}
+		return factors;
+	}
+
+	private static short getFactorSum(short num) {
+		short factorSum = 0;
+		for (short i = 1; i < num; i++) {
+			if (num % i == 0)
+				factorSum += i;
+		}
+		return factorSum;
+	}
+
+	private static void friendlyNumbers(short a, short b) {
+		// 4.34
+		short aFactorSum = getFactorSum(a);
+		short bFactorSum = getFactorSum(b);
+		ArrayList aFactors = getFactors(a);
+		ArrayList bFactors = getFactors(b);
+		// for (Object o : aFactors)
+		// System.out.println(o);
+		System.out.println(aFactors + " " + aFactorSum);
+		System.out.println(bFactors + " " + bFactorSum);
+		if (bFactorSum == a && aFactorSum == b) {
+			System.out.println(a + " and " + b + " are friendly numbers!");
+		} else {
+			System.out.println("Nope, not friendly.");
+		}
 	}
 
 	private static void christmasTree() {
 		// 4.33
-
+		int spaces = 5;
+		String leftSpaces, stars;
+		for (int i = 1; i < 10; i += 2) {
+			spaces -= 1;
+			leftSpaces = buildString1(" ", spaces);
+			stars = buildString1("*", i);
+			System.out.println(leftSpaces + stars);
+		}
+		System.out.println(buildString1(" ", 4) + "I");
 	}
 
 	private static long changeBase(short decimal, byte base) {
