@@ -11,10 +11,19 @@ public class NonPrimitives {
 		createFields();
 		// swap();
 		// calendar();
+		multiDimensional();
 	}
 
 	private static void multiDimensional() {
-
+		String[][] appointments;
+		appointments = new String[31][];
+		for (int i = 0; i < appointments.length; i++) {
+			appointments[i] = new String[24];
+			for (int j = 0; j < appointments[i].length; j++)
+				appointments[i][j] = "";
+		}
+		appointments[13][23] = "test";
+		System.out.println(appointments[13][23]);
 	}
 
 	private static void calendar() {
