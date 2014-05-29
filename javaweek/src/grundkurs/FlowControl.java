@@ -65,17 +65,49 @@ public class FlowControl {
 		// christmasTree();
 		// friendlyNumbers((short) 10744, (short) 10856);
 		System.out.println(weekDay(1, 04, 2013));
+		easterDay(1994);
+	}
+
+	private static void easterDay(int year) {
+		// 4.36
+		int a = year % 19;
+		int b = year % 4;
+		int c = year % 7;
+		int m = (8 * (year / 100) + 13) / 25 - 2;
+		int s = year / 100 - year / 400 - 2;
+		int n = (6 + s) % 7;
+		m = (15 + s - m) % 30;
+		int d = (m + 19 * a) % 30;
+		if (d == 29) {
+			d = 28;
+		} else if (d == 28 && a >= 11) {
+			d = 27;
+		}
+		int e = (2 * b + 4 * c + 6 * d + n) % 7;
+		int day, month;
+		day = 21 + d + e + 1;
+		if (day > 31) {
+			day %= 31;
+			month = 4;
+		} else {
+			month = 3;
+		}
+		String easterDate = String.format("%02d", day) + "."
+				+ String.format("%02d", month) + ".";
+		System.out.println("In the year " + year + " Easter Day was the "
+				+ easterDate);
 	}
 
 	private static String weekDay(int day, int month, int year) {
+		// 4. 35
 		Map<Integer, String> intToDay = new HashMap<Integer, String>();
-		intToDay.put(0, "sunday");
-		intToDay.put(1, "monday");
-		intToDay.put(2, "tuesday");
-		intToDay.put(3, "wednesday");
-		intToDay.put(4, "thursday");
-		intToDay.put(5, "friday");
-		intToDay.put(6, "saturday");
+		intToDay.put(0, "Sunday");
+		intToDay.put(1, "Monday");
+		intToDay.put(2, "Tuesday");
+		intToDay.put(3, "Wednesday");
+		intToDay.put(4, "Thursday");
+		intToDay.put(5, "Friday");
+		intToDay.put(6, "Saturday");
 		if (month <= 2) {
 			month += 10;
 			year -= 1;
@@ -90,7 +122,6 @@ public class FlowControl {
 			dayInt += 7;
 		else
 			dayInt -= 1;
-		// System.out.println(century + " " + decade + " " + dayInt);
 		return intToDay.get(dayInt);
 	}
 
