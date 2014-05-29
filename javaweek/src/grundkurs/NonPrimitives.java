@@ -11,7 +11,57 @@ public class NonPrimitives {
 		createFields();
 		// swap();
 		// calendar();
-		multiDimensional();
+		// multiDimensional();
+		fixedLength();
+		loopComparison();
+	}
+
+	public static void loopComparison() {
+		int[] werte = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		int summe = 0;
+		for (int i = 0; i < werte.length; i++)
+			summe = summe + werte[i];
+		System.out.println("Summe: " + summe);
+		summe = 0;
+		for (int x : werte)
+			summe = summe + x;
+		System.out.println("Summe: " + summe);
+
+		// Zweidimensionale Matrix mit Zeilen unterschiedlicher
+		// Laenge (hier speziell eine Dreiecksmatrix)
+		int[][] matrix = { { 1 }, { 2, 3 }, { 4, 5, 6 }, { 7, 8, 9, 10 } };
+		// Summation der Elemente mit traditioneller Schleifen-Notation
+		summe = 0;
+		for (int i = 0; i < matrix.length; i++)
+			for (int j = 0; j < matrix[i].length; j++)
+				summe = summe + matrix[i][j];
+		System.out.println("Summe: " + summe);
+		// Summation der Elemente mit vereinfachter Schleifen-Notation
+		summe = 0;
+		for (int[] zeile : matrix)
+			for (int element : zeile)
+				summe = summe + element;
+		System.out.println("Summe: " + summe);
+	}
+
+	private static void fixedLength() {
+		String[][][] appointments = new String[12][][];
+		appointments[0] = new String[31][24]; // Jan
+		appointments[1] = new String[28][24]; // Feb
+		appointments[2] = new String[31][24]; // March
+		appointments[3] = new String[30][24]; // April
+		appointments[4] = new String[31][24]; // May
+		appointments[5] = new String[30][24]; // June
+		appointments[6] = new String[31][24]; // July
+		appointments[7] = new String[31][24]; // August
+		appointments[8] = new String[30][24]; // September
+		appointments[9] = new String[31][24]; // October
+		appointments[10] = new String[30][24]; // Nov
+		appointments[11] = new String[31][24]; // Dec
+		for (int i = 0; i < appointments.length; i++)
+			for (int j = 0; j < appointments[i].length; j++)
+				for (int k = 0; k < appointments[i][j].length; k++)
+					appointments[i][j][k] = "";
 	}
 
 	private static void multiDimensional() {
@@ -22,8 +72,45 @@ public class NonPrimitives {
 			for (int j = 0; j < appointments[i].length; j++)
 				appointments[i][j] = "";
 		}
-		appointments[13][23] = "test";
-		System.out.println(appointments[13][23]);
+		boolean done = false;
+		Scanner in = new Scanner(System.in);
+		while (!done) {
+			System.out.println("1 = New Entry");
+			System.out.println("2 = Show appointment");
+			System.out.println("3 = Quit");
+			int choice = in.nextInt();
+			switch (choice) {
+			case 1:
+				System.out.println("What day?");
+				int day = in.nextInt();
+				if (day < 0 | day > 31) {
+					System.out.println("Is that day really on your calendar?");
+					break;
+				}
+				System.out.println("What hour?");
+				int hour = in.nextInt();
+				if (hour < 0 | hour > 23) {
+					System.out.println("Is that hour really on your clock?");
+					break;
+				}
+				System.out.println("What is your entry?");
+				String entry = in.next();
+				appointments[day][hour] = entry;
+				break;
+			case 2:
+				System.out.println("What day?");
+				int printDay = in.nextInt();
+				for (int i = 0; i < 24; i++)
+					System.out
+							.println(i + " Uhr: " + appointments[printDay][i]);
+				break;
+			case 3:
+				done = true;
+				break;
+			default:
+				System.out.println("Invalid choice.");
+			}
+		}
 	}
 
 	private static void calendar() {
