@@ -70,21 +70,21 @@ public class FlowControl {
 
 	private static void easterDay(int year) {
 		// 4.36
-		int a = year % 19;
-		int b = year % 4;
-		int c = year % 7;
-		int m = (8 * (year / 100) + 13) / 25 - 2;
-		int s = year / 100 - year / 400 - 2;
-		int n = (6 + s) % 7;
+		int a, b, c, d, e, m, s, n, day, month;
+		a = year % 19;
+		b = year % 4;
+		c = year % 7;
+		m = (8 * (year / 100) + 13) / 25 - 2;
+		s = year / 100 - year / 400 - 2;
+		n = (6 + s) % 7;
 		m = (15 + s - m) % 30;
-		int d = (m + 19 * a) % 30;
+		d = (m + 19 * a) % 30;
 		if (d == 29) {
 			d = 28;
 		} else if (d == 28 && a >= 11) {
 			d = 27;
 		}
-		int e = (2 * b + 4 * c + 6 * d + n) % 7;
-		int day, month;
+		e = (2 * b + 4 * c + 6 * d + n) % 7;
 		day = 21 + d + e + 1;
 		if (day > 31) {
 			day %= 31;
@@ -100,29 +100,23 @@ public class FlowControl {
 
 	private static String weekDay(int day, int month, int year) {
 		// 4. 35
-		Map<Integer, String> intToDay = new HashMap<Integer, String>();
-		intToDay.put(0, "Sunday");
-		intToDay.put(1, "Monday");
-		intToDay.put(2, "Tuesday");
-		intToDay.put(3, "Wednesday");
-		intToDay.put(4, "Thursday");
-		intToDay.put(5, "Friday");
-		intToDay.put(6, "Saturday");
+		int century, decade, dayInt;
+		String[] days = { "Sunday", "Monday", "Tuesday", "Wednesday",
+				"Thursday", "Friday", "Saturday" };
 		if (month <= 2) {
 			month += 10;
 			year -= 1;
 		} else {
 			month -= 2;
 		}
-		int century = year / 100;
-		int decade = year % 100;
-		int dayInt = (((26 * month - 2) / 10) + day + year + year / 4 + century
-				/ 4 - 2 * century) % 7;
+		century = year / 100;
+		decade = year % 100;
+		dayInt = (((26 * month - 2) / 10) + day + year + year / 4 + century / 4 - 2 * century) % 7;
 		if (dayInt < 0)
 			dayInt += 7;
 		else
 			dayInt -= 1;
-		return intToDay.get(dayInt);
+		return days[dayInt];
 	}
 
 	private static ArrayList<Short> getFactors(short num) {
