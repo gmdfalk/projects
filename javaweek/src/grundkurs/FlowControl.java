@@ -63,7 +63,35 @@ public class FlowControl {
 		// guessingGame();
 		// System.out.println(changeBase((short) 1234, (byte) 2));
 		// christmasTree();
-		friendlyNumbers((short) 220, (short) 284);
+		// friendlyNumbers((short) 10744, (short) 10856);
+		System.out.println(weekDay(1, 04, 2013));
+	}
+
+	private static String weekDay(int day, int month, int year) {
+		Map<Integer, String> intToDay = new HashMap<Integer, String>();
+		intToDay.put(0, "sunday");
+		intToDay.put(1, "monday");
+		intToDay.put(2, "tuesday");
+		intToDay.put(3, "wednesday");
+		intToDay.put(4, "thursday");
+		intToDay.put(5, "friday");
+		intToDay.put(6, "saturday");
+		if (month <= 2) {
+			month += 10;
+			year -= 1;
+		} else {
+			month -= 2;
+		}
+		int century = year / 100;
+		int decade = year % 100;
+		int dayInt = (((26 * month - 2) / 10) + day + year + year / 4 + century
+				/ 4 - 2 * century) % 7;
+		if (dayInt < 0)
+			dayInt += 7;
+		else
+			dayInt -= 1;
+		// System.out.println(century + " " + decade + " " + dayInt);
+		return intToDay.get(dayInt);
 	}
 
 	private static ArrayList<Short> getFactors(short num) {
