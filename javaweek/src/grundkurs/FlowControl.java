@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -56,13 +57,57 @@ public class FlowControl {
 		// crossSum(123456789);
 		// toGalacticTime("25.11.2011, 11.11 Uhr");
 		// toEarthTime("328825.465");
-		numToText(12345);
-		multiply(10);
-		compoundInterest(100, 0.06, 4);
+		// numToText(12345);
+		// multiply(10);
+		// compoundInterest(100, 0.06, 4);
+		// guessingGame();
+		short decimal = 1234;
+		byte base = 2;
+		changeBase(decimal, base);
+	}
+
+	private static void changeBase(short decimal, byte base) {
+		// 4.32
+		if (base > 9 || base < 2)
+			return;
+		long binary = 0;
+		long m = 1;
+		while (decimal > 0) {
+			binary += (decimal % base) * m;
+			decimal /= base;
+			m *= 10;
+		}
+		System.out.println(binary);
+	}
+
+	private static void guessingGame() {
+		// 4.31
+		int winner = (int) (99 * Math.random() + 1);
+		int guess = -1;
+		int counter = 0;
+		Scanner in = new Scanner(System.in);
+		System.out.println(winner);
+		System.out.println("Guess the number (between 0 and 100)");
+		while (guess != winner) {
+			try {
+				guess = in.nextInt();
+				counter += 1;
+				if (guess > winner)
+					System.out.println("Smaller!");
+				else if (guess < winner)
+					System.out.println("Bigger!");
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input!");
+				in.next();
+			}
+		}
+		System.out.println("Yay! You've won! It took you " + counter
+				+ " tries!");
 	}
 
 	private static void compoundInterest(double amount, double interest,
 			double runtime) {
+		// 4.30
 		String label;
 		for (int i = 1; i <= runtime; i++) {
 			amount *= (interest + 1.0);
@@ -76,6 +121,7 @@ public class FlowControl {
 	}
 
 	private static void multiply(int n) {
+		// 4.29
 		for (int i = 1; i <= 10; i++) {
 			System.out.print(i * n + " ");
 		}
@@ -83,6 +129,7 @@ public class FlowControl {
 	}
 
 	private static void numToText(int n) {
+		// 4.28
 		Map<Integer, String> toText = new HashMap<Integer, String>();
 		toText.put(1, "one");
 		toText.put(2, "two");
@@ -108,7 +155,7 @@ public class FlowControl {
 	}
 
 	private static void toEarthTime(String timeString) {
-		// Validate input string.
+		// 4.27
 		String[] timeParts = timeString.split("\\.");
 		int gDays = Integer.parseInt(timeParts[0]);
 		int gTime = Integer.parseInt(timeParts[1]);
@@ -127,6 +174,7 @@ public class FlowControl {
 	}
 
 	private static void toGalacticTime(String timeString) {
+		// 4.27
 		// Validate input string.
 		if (!timeString
 				.matches("^\\d{1,2}\\.\\d{1,2}\\.\\d{4}.*\\d{1,2}\\.\\d{1,2}.*")) {
@@ -161,6 +209,7 @@ public class FlowControl {
 	}
 
 	private static void crossSum(int n) {
+		// 4.26
 		int sum = 0;
 		while (n > 0) {
 			int digit = n % 10;
