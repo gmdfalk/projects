@@ -63,21 +63,29 @@ public class FlowControl {
 		// guessingGame();
 		short decimal = 1234;
 		byte base = 2;
-		changeBase(decimal, base);
+		System.out.println(changeBase(decimal, base));
+		christmasTree();
 	}
 
-	private static void changeBase(short decimal, byte base) {
+	private static void christmasTree() {
+		// 4.33
+
+	}
+
+	private static long changeBase(short decimal, byte base) {
 		// 4.32
+		long converted = 0;
 		if (base > 9 || base < 2)
-			return;
-		long binary = 0;
-		long m = 1;
+			return converted;
+		long multiplier = 1;
 		while (decimal > 0) {
-			binary += (decimal % base) * m;
+			converted += (decimal % base) * multiplier;
 			decimal /= base;
-			m *= 10;
+			multiplier *= 10;
+			// System.out.println("converted: " + converted + ", decimal: "
+			// + decimal + " multiplier: " + multiplier);
 		}
-		System.out.println(binary);
+		return converted;
 	}
 
 	private static void guessingGame() {
