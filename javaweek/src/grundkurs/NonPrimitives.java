@@ -16,6 +16,12 @@ public class NonPrimitives {
 		loopComparison();
 	}
 
+	public static void derp() {
+		byte a, b;
+		byte[] aReihe, aZeile, aMatrix, bReihe, bZeile;
+		byte[][] bMatrix;
+	}
+
 	public static void loopComparison() {
 		int[] werte = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		int summe = 0;
