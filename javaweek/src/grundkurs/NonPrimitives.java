@@ -12,14 +12,33 @@ public class NonPrimitives {
 		// swap();
 		// calendar();
 		// multiDimensional();
-		fixedLength();
-		loopComparison();
+		// fixedLength();
+		// loopComparison();
+		// derp();
+		alternates();
+	}
+
+	public static void alternates() {
+		double[] a, c;
+		a = new double[5];
+		double[] b = { 1.1, 2.2, 3.3, 4.4, 5.5 };
+		c = new double[] { 1.1, 2.2, 3.3, 4.4, 5.5 };
+
+		int[][][][] Feld1 = new int[6][10][8][];
+		int[][][][] Feld2 = new int[6][][][];
+		for (int d1 = 0; d1 < Feld2.length; d1++) {
+			Feld2[d1] = new int[10][][];
+			for (int d2 = 0; d2 < Feld2[d1].length; d2++) {
+				Feld2[d1][d2] = new int[8][];
+			}
+		}
+		System.out.println(Feld1.length == Feld2.length);
 	}
 
 	public static void derp() {
-		byte a, b;
-		byte[] aReihe, aZeile, aMatrix, bReihe, bZeile;
-		byte[][] bMatrix;
+		// byte a, b;
+		// byte[] aReihe, aZeile, bReihe, bZeile;
+		// byte[][] aMatrix, bMatrix;
 	}
 
 	public static void loopComparison() {
