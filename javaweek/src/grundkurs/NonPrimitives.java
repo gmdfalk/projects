@@ -35,6 +35,15 @@ public class NonPrimitives {
 		System.out.println(Feld1.length == Feld2.length);
 	}
 
+	public static int multiply(int a, int b) {
+		/**
+		 * @param int a.
+		 * @param int b.
+		 * @returns Product of a and b.
+		 */
+		return a * b;
+	}
+
 	public static void derp() {
 		// byte a, b;
 		// byte[] aReihe, aZeile, bReihe, bZeile;
