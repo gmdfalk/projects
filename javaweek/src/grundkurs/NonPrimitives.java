@@ -7,19 +7,86 @@ import java.util.Scanner;
 
 public class NonPrimitives {
 	public static void main(String[] args) {
-		Integer a = 10, b = 20;
-		System.out.println(a * b);
-		createFields();
+		// Integer a = 10, b = 20;
+		// System.out.println(a * b);
+		// createFields();
 		// swap();
 		// calendar();
 		// multiDimensional();
 		// fixedLength();
 		// loopComparison();
 		// derp();
-		alternates();
+		// alternates();
+		// sortNumbers();
+		magicSquare(2);
+	}
+
+	public static void addresses() {
+		String[] name = new String[20];
+		String[] street = new String[20];
+		String[] city = new String[20];
+		String[] mail = new String[20];
+		String[] comment = new String[20];
+
+	}
+
+	public static void magicSquare(int n) {
+		// 5.5
+		if (n < 3) {
+			System.out.println("Correcting input to 3.");
+			n = 3;
+		} else if (n > 10) {
+			System.out.println("Correcting input to 10.");
+			n = 10;
+		}
+		int col = n / 2 + 1;
+		int row = n / 2;
+		int[][] square = new int[n][n];
+		for (int i = 1; i <= n * n; i++) {
+			square[row][col] = i;
+			col += 1;
+			row -= 1;
+			if (row < 0)
+				row = n - 1;
+			if (col == n)
+				col = 0;
+			if (square[row][col] != 0) {
+				col += 1;
+				row += 1;
+				if (row == n)
+					row = 0;
+				if (col == n)
+					col = 0;
+			}
+		}
+		for (int i = 0; i < n; i++)
+			// System.out.println(square[i]);
+			for (int j = 0; j < n; j++) {
+				System.out.print(square[i][j] + "\t");
+				if (j == n - 1)
+					System.out.println("");
+			}
+	}
+
+	public static void sortNumbers() {
+		// 5.4
+		Scanner in = new Scanner(System.in);
+		int[] list = new int[5];
+		for (int i = 0; i < list.length; i++) {
+			System.out.println("Enter an integer: ");
+			list[i] = in.nextInt();
+		}
+		for (int i : list)
+			System.out.print(i + " ");
+		System.out.println("");
+		Arrays.sort(list);
+		for (int i : list)
+			System.out.print(i + " ");
+		System.out.println("");
 	}
 
 	public static void alternates() {
+		// 5.2
 		double[] a, c;
 		a = new double[5];
 		double[] b = { 1.1, 2.2, 3.3, 4.4, 5.5 };
