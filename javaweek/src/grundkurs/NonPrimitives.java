@@ -5,8 +5,6 @@ import grundkurs.tools.IOTools;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import com.sun.nio.zipfs.ZipDirectoryStream;
-
 public class NonPrimitives {
 	public static class Address {
 		// 5.6
