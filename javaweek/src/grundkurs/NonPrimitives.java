@@ -1,8 +1,9 @@
 package grundkurs;
 
-import java.util.Scanner;
-
 import grundkurs.tools.IOTools;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class NonPrimitives {
 	public static void main(String[] args) {
@@ -26,16 +27,25 @@ public class NonPrimitives {
 
 		int[][][][] Feld1 = new int[6][10][8][];
 		int[][][][] Feld2 = new int[6][][][];
-		for (int d1 = 0; d1 < Feld2.length; d1++) {
+		for (int d1 = 0; d1 < 6; d1++) {
 			Feld2[d1] = new int[10][][];
-			for (int d2 = 0; d2 < Feld2[d1].length; d2++) {
+			for (int d2 = 0; d2 < 10; d2++) {
 				Feld2[d1][d2] = new int[8][];
 			}
 		}
+		int[][] g = { { 1, 2, 3 }, { 1, 2, 3 }, { 1, 2, 3 } };
+		int[][] h = { { 1, 2, 3 }, { 1, 2, 3 }, { 1, 2, 3 } };
 		System.out.println(Feld1.length == Feld2.length);
+		System.out.println(g == h); // only compares references.
+		System.out.println(Arrays.equals(g, h)); // this works for
+													// one-dimensional
+													// arrays only.
+		System.out.println(Arrays.deepEquals(g, h));
+
 	}
 
 	public static int multiply(int a, int b) {
+		// JUnit-tested method.
 		/**
 		 * @param int a.
 		 * @param int b.
@@ -45,9 +55,10 @@ public class NonPrimitives {
 	}
 
 	public static void derp() {
-		// byte a, b;
-		// byte[] aReihe, aZeile, bReihe, bZeile;
-		// byte[][] aMatrix, bMatrix;
+		// 5.1
+		byte a, b;
+		byte[] aReihe, aZeile, bReihe, bZeile;
+		byte[][] aMatrix, bMatrix;
 	}
 
 	public static void loopComparison() {
