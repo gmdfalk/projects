@@ -5,7 +5,20 @@ import grundkurs.tools.IOTools;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import com.sun.nio.zipfs.ZipDirectoryStream;
+
 public class NonPrimitives {
+	public static class Address {
+		// 5.6
+		public String name;
+		public String street;
+		public String city;
+		public String mail;
+		public String comment;
+		public int streetNo;
+		public int zipcode;
+	}
+
 	public static void main(String[] args) {
 		// Integer a = 10, b = 20;
 		// System.out.println(a * b);
@@ -18,16 +31,10 @@ public class NonPrimitives {
 		// derp();
 		// alternates();
 		// sortNumbers();
-		magicSquare(2);
-	}
-
-	public static void addresses() {
-		String[] name = new String[20];
-		String[] street = new String[20];
-		String[] city = new String[20];
-		String[] mail = new String[20];
-		String[] comment = new String[20];
-
+		// magicSquare(2);
+		Address a = new Address();
+		System.out.println(a.name);
+		System.out.println(a.streetNo);
 	}
 
 	public static void magicSquare(int n) {
